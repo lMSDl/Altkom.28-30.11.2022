@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:WpfApp.Models"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -14,7 +15,6 @@
             <Button Background="Blue" Foreground="White" Height="50">
                 <Button Background="White" Width="50" Content="Cancel"/>
             </Button>
-
         </StackPanel>
 
     </Grid>
