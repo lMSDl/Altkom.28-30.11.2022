@@ -6,86 +6,89 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="ControlsWindow" Height="450" Width="800">
-    <StackPanel>
 
-        <Label Target="{Binding ElementName=InputTextBox}" >Te_xt</Label>
-        <Label Content="{Binding Path=Text, ElementName=InputTextBox, Mode=OneTime}" />
-        <Label x:Name="OutputLabel" />
+    <ScrollViewer HorizontalScrollBarVisibility="Visible">
+        <StackPanel>
 
-        <TextBox AcceptsReturn="true"
-                 AcceptsTab="true"
-                 SpellCheck.IsEnabled="True"
-                 Language="pl-pl"
-                 TextWrapping="WrapWithOverflow"
-                 ToolTip="Wpisz tekst"
-                 x:Name="InputTextBox"
-                 Text="{Binding ElementName=OutputLabel, Path=Content, Delay=1000, UpdateSourceTrigger=PropertyChanged}"
-                 >
-            
-        </TextBox>
+            <Label Target="{Binding ElementName=InputTextBox}" >Te_xt</Label>
+            <Label Content="{Binding Path=Text, ElementName=InputTextBox, Mode=OneTime}" />
+            <Label x:Name="OutputLabel" />
 
-        <TextBlock  TextTrimming="CharacterEllipsis" x:Name="MyTextBlock" >
-            Pierwsza linijka. <LineBreak/>
-            <Underline>Druga linijka.</Underline>
-            <Hyperlink NavigateUri="https://www.altkom.pl" >Trzecia linijka.</Hyperlink>
-           
-        </TextBlock>
+            <TextBox AcceptsReturn="true"
+                     AcceptsTab="true"
+                     SpellCheck.IsEnabled="True"
+                     Language="pl-pl"
+                     TextWrapping="WrapWithOverflow"
+                     ToolTip="Wpisz tekst"
+                     x:Name="InputTextBox"
+                     Text="{Binding ElementName=OutputLabel, Path=Content, Delay=1000, UpdateSourceTrigger=PropertyChanged}"
+                     >
 
-        <PasswordBox PasswordChar="%" MaxLength="10"/>
+            </TextBox>
 
-        <Button Width="100" Height="100" Background="Blue" RenderTransformOrigin="0.5,0.5"
-                Click="Button_Click">
-            <Button.RenderTransform>
-                <RotateTransform Angle="{Binding ElementName=Slider, Path=Value}" />
-            </Button.RenderTransform>
-            
-            <StackPanel  >
-                <Image Source="/MyImages/tree.jpg" Stretch="Uniform" />
-                <Label Foreground="white">Tree</Label>
-            </StackPanel>
-        </Button>
+            <TextBlock  TextTrimming="CharacterEllipsis" x:Name="MyTextBlock" >
+                Pierwsza linijka. <LineBreak/>
+                <Underline>Druga linijka.</Underline>
+                <Hyperlink NavigateUri="https://www.altkom.pl" >Trzecia linijka.</Hyperlink>
 
-        <CheckBox IsThreeState="True" Content="Main" Click="CheckBox_Main_Click"
-                  x:Name="CheckBoxMain"/>
-        <CheckBox Content="Child1" x:Name="CheckBoxChild1" Click="CheckBoxChild_Click" />
-        <CheckBox Content="Child2" x:Name="CheckBoxChild2" Click="CheckBoxChild_Click"/>
-        <CheckBox Content="Child3" x:Name="CheckBoxChild3" Click="CheckBoxChild_Click"/>
+            </TextBlock>
 
-        <StackPanel Margin="10">
-        <Label>Question1</Label>
-        <RadioButton Content="Option1" GroupName="g1"/>
-            <RadioButton Content="Option2" GroupName="g1"/>
-            <RadioButton Content="Option3" GroupName="g1"/>
-            
-            <Label>Question2</Label>
-            <RadioButton Content="Option1" GroupName="g2"/>
-            <RadioButton Content="Option2" GroupName="g2"/>
-            <RadioButton  GroupName="g2">
-                <StackPanel Orientation="Horizontal" >
-                    <Image Width="16" Height="16" Source="/MyImages/tree.jpg" Stretch="Uniform" />
-                    <Label >Option3</Label>
-                </StackPanel>
-            </RadioButton>
-        </StackPanel>
+            <PasswordBox PasswordChar="%" MaxLength="10"/>
 
-
-        <Canvas Height="100" >
-            <Ellipse Width="100" Height="100" Fill="Black"/>
-            <Line X1="50" Canvas.Left="50" Canvas.Top="50" Stroke="White" StrokeThickness="2">
-                <Line.RenderTransform>
+            <Button Width="100" Height="100" Background="Blue" RenderTransformOrigin="0.5,0.5"
+                    Click="Button_Click">
+                <Button.RenderTransform>
                     <RotateTransform Angle="{Binding ElementName=Slider, Path=Value}" />
-                </Line.RenderTransform>
-            </Line>
-        </Canvas>
+                </Button.RenderTransform>
 
-        <Slider x:Name="Slider"
-                TickPlacement="Both"
-                TickFrequency="10"
-                Minimum="-180"
-                Maximum="180"
-                AutoToolTipPlacement="BottomRight"
-                IsSnapToTickEnabled="True"
-                Background="Black" />
+                <StackPanel  >
+                    <Image Source="/MyImages/tree.jpg" Stretch="Uniform" />
+                    <Label Foreground="white">Tree</Label>
+                </StackPanel>
+            </Button>
 
-    </StackPanel>
+            <CheckBox IsThreeState="True" Content="Main" Click="CheckBox_Main_Click"
+                      x:Name="CheckBoxMain"/>
+            <CheckBox Content="Child1" x:Name="CheckBoxChild1" Click="CheckBoxChild_Click" />
+            <CheckBox Content="Child2" x:Name="CheckBoxChild2" Click="CheckBoxChild_Click"/>
+            <CheckBox Content="Child3" x:Name="CheckBoxChild3" Click="CheckBoxChild_Click"/>
+
+            <StackPanel Margin="10">
+                <Label>Question1</Label>
+                <RadioButton Content="Option1" GroupName="g1"/>
+                <RadioButton Content="Option2" GroupName="g1"/>
+                <RadioButton Content="Option3" GroupName="g1"/>
+
+                <Label>Question2</Label>
+                <RadioButton Content="Option1" GroupName="g2"/>
+                <RadioButton Content="Option2" GroupName="g2"/>
+                <RadioButton  GroupName="g2">
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Width="16" Height="16" Source="/MyImages/tree.jpg" Stretch="Uniform" />
+                        <Label >Option3</Label>
+                    </StackPanel>
+                </RadioButton>
+            </StackPanel>
+
+
+            <Canvas Height="100" >
+                <Ellipse Width="100" Height="100" Fill="Black"/>
+                <Line X1="50" Canvas.Left="50" Canvas.Top="50" Stroke="White" StrokeThickness="2">
+                    <Line.RenderTransform>
+                        <RotateTransform Angle="{Binding ElementName=Slider, Path=Value}" />
+                    </Line.RenderTransform>
+                </Line>
+            </Canvas>
+
+            <Slider x:Name="Slider"
+                    TickPlacement="Both"
+                    TickFrequency="10"
+                    Minimum="-180"
+                    Maximum="180"
+                    AutoToolTipPlacement="BottomRight"
+                    IsSnapToTickEnabled="True"
+                    Background="Black" />
+
+        </StackPanel>
+    </ScrollViewer>
 </Window>
