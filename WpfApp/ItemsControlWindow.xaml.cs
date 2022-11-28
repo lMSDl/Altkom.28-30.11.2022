@@ -21,6 +21,8 @@ namespace WpfApp
     /// </summary>
     public partial class ItemsControlWindow : Window
     {
+        private Product selectedProduct;
+
         public ItemsControlWindow()
         {
             InitializeComponent();
@@ -30,5 +32,7 @@ namespace WpfApp
         }
 
         public IEnumerable<Product> Products { get; set; }
+        public Product SelectedProduct { get => selectedProduct; set => selectedProduct = value; }
+        public IEnumerable<Product> SelectedProducts { get; set; }
     }
 }
