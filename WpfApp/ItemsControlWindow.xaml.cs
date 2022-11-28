@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Models;
+using Models.Fakers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,11 @@ namespace WpfApp
         public ItemsControlWindow()
         {
             InitializeComponent();
+            DataContext = this;
+
+            Products = new ProductFaker().Generate(15);
         }
+
+        public IEnumerable<Product> Products { get; set; }
     }
 }
