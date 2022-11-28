@@ -7,4 +7,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Resource Include="MyImages\tree.jpg" />
+  </ItemGroup>
+
 </Project>

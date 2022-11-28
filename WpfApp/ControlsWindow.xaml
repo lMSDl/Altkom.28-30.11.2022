@@ -1,0 +1,68 @@
+﻿<Window x:Class="WpfApp.ControlsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="ControlsWindow" Height="450" Width="800">
+    <StackPanel>
+
+        <Label>Label1 /n</Label>
+        <Label Content="Label2" />
+
+        <TextBox AcceptsReturn="true"
+                 AcceptsTab="true"
+                 SpellCheck.IsEnabled="True"
+                 Language="pl-pl"
+                 TextWrapping="WrapWithOverflow"
+                 ToolTip="Wpisz tekst" >
+            abc
+        </TextBox>
+
+        <TextBlock  TextTrimming="CharacterEllipsis" x:Name="MyTextBlock" >
+            Pierwsza linijka. <LineBreak/>
+            <Underline>Druga linijka.</Underline>
+            <Hyperlink NavigateUri="https://www.altkom.pl" >Trzecia linijka.</Hyperlink>
+           
+        </TextBlock>
+
+        <PasswordBox PasswordChar="%" MaxLength="10"/>
+
+        <Button Width="100" Height="100" Background="Blue">
+            <StackPanel  >
+                <Image Source="/MyImages/tree.jpg" Stretch="Uniform" />
+                <Label Foreground="white">Tree</Label>
+            </StackPanel>
+        </Button>
+
+        <CheckBox IsThreeState="True" Content="Main"/>
+        <CheckBox Content="Child1" />
+        <CheckBox Content="Child2" />
+        <CheckBox Content="Child3" />
+
+        <StackPanel Margin="10">
+        <Label>Question1</Label>
+        <RadioButton Content="Option1" GroupName="g1"/>
+            <RadioButton Content="Option2" GroupName="g1"/>
+            <RadioButton Content="Option3" GroupName="g1"/>
+            
+            <Label>Question2</Label>
+            <RadioButton Content="Option1" GroupName="g2"/>
+            <RadioButton Content="Option2" GroupName="g2"/>
+            <RadioButton  GroupName="g2">
+                <StackPanel Orientation="Horizontal" >
+                    <Image Width="16" Height="16" Source="/MyImages/tree.jpg" Stretch="Uniform" />
+                    <Label >Option3</Label>
+                </StackPanel>
+            </RadioButton>
+        </StackPanel>
+
+        <Slider TickPlacement="Both"
+                TickFrequency="10"
+                AutoToolTipPlacement="BottomRight"
+                IsSnapToTickEnabled="True"
+                Background="Black" />
+
+    </StackPanel>
+</Window>
