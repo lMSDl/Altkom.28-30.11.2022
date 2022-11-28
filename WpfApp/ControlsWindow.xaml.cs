@@ -27,5 +27,29 @@ namespace WpfApp
 
         }
 
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BYE!");
+            var element = ((FrameworkElement)sender);
+            element.Visibility = Visibility.Hidden;
+
+            Task.Delay(5000).ContinueWith(t => Dispatcher.Invoke(() => element.Visibility = Visibility.Visible));
+        }
+
+        private void CheckBox_Main_Click(object sender, RoutedEventArgs e)
+        {
+            CheckBoxChild1.IsChecked = CheckBoxChild2.IsChecked = CheckBoxChild3.IsChecked = CheckBoxMain.IsChecked ?? false;
+        }
+
+        private void CheckBoxChild_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxChild1.IsChecked == true && CheckBoxChild2.IsChecked == true && CheckBoxChild3.IsChecked == true)
+                CheckBoxMain.IsChecked = true;
+            else if (CheckBoxChild1.IsChecked == false && CheckBoxChild2.IsChecked == false && CheckBoxChild3.IsChecked == false)
+                CheckBoxMain.IsChecked = false;
+            else
+                CheckBoxMain.IsChecked = null;
+        }
     }
 }

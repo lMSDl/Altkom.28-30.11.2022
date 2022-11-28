@@ -33,7 +33,8 @@
 
         <PasswordBox PasswordChar="%" MaxLength="10"/>
 
-        <Button Width="100" Height="100" Background="Blue" RenderTransformOrigin="0.5,0.5">
+        <Button Width="100" Height="100" Background="Blue" RenderTransformOrigin="0.5,0.5"
+                Click="Button_Click">
             <Button.RenderTransform>
                 <RotateTransform Angle="{Binding ElementName=Slider, Path=Value}" />
             </Button.RenderTransform>
@@ -44,10 +45,11 @@
             </StackPanel>
         </Button>
 
-        <CheckBox IsThreeState="True" Content="Main"/>
-        <CheckBox Content="Child1" />
-        <CheckBox Content="Child2" />
-        <CheckBox Content="Child3" />
+        <CheckBox IsThreeState="True" Content="Main" Click="CheckBox_Main_Click"
+                  x:Name="CheckBoxMain"/>
+        <CheckBox Content="Child1" x:Name="CheckBoxChild1" Click="CheckBoxChild_Click" />
+        <CheckBox Content="Child2" x:Name="CheckBoxChild2" Click="CheckBoxChild_Click"/>
+        <CheckBox Content="Child3" x:Name="CheckBoxChild3" Click="CheckBoxChild_Click"/>
 
         <StackPanel Margin="10">
         <Label>Question1</Label>
