@@ -47,7 +47,7 @@ namespace WpfApp
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var dice in Dices)
+            foreach (var dice in Dices.Where(x => !x.IsLocked))
             {
                 dice.Value = 0;
             }

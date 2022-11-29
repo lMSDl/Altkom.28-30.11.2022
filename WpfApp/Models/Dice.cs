@@ -18,8 +18,8 @@ namespace WpfApp.Models
             get => value;
             set
             {
-                if (IsLocked)
-                    return;
+                /*if (IsLocked)
+                    return;*/
 
                 this.value = value;
 
