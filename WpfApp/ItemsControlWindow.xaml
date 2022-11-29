@@ -6,15 +6,38 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="ItemsControlWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ProductTemplate">
+                <StackPanel Orientation="Vertical" Background="AliceBlue" Margin="10">
+                    <Label Content="Nazwa: "/>
+                    <Label Content="{Binding Name}"/>
+                    <Label Content="Data ważności: "/>
+                    <Label Content="{Binding ExpirationDate}"/>
+                    <Label Content="Cena [zł]: "/>
+                    <TextBox Text="{Binding Price}"/>
+                </StackPanel>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <DockPanel>
-        <ComboBox DockPanel.Dock="Top">
-                <ComboBoxItem Tag="ItemsControl"/>
-                <ComboBoxItem Tag="ListBox"/>
-                <ComboBoxItem Tag="ListView"/>
-                <ComboBoxItem Tag="DataGrid"/>
+            <ComboBox DockPanel.Dock="Top" SelectedIndex="{Binding SelectedIndex, ElementName=TabControl}">
+                <ComboBoxItem Content="ItemsControl"/>
+                <ComboBoxItem Content="ListBox"/>
+                <ComboBoxItem Content="ListView"/>
+                <ComboBoxItem Content="DataGrid"/>
             </ComboBox>
-        <TabControl SelectedIndex="2" TabStripPlacement="Left" BorderThickness="10" BorderBrush="Pink">
+
+            <ListBox ItemsSource="{Binding Products}"
+                         SelectedItem="{Binding SelectedProduct}"
+                         SelectionMode="Extended"
+                                      ItemTemplate="{StaticResource ResourceKey=ProductTemplate}">
+            </ListBox>
+            <TabControl x:Name="TabControl" SelectedIndex="2" TabStripPlacement="Left" BorderThickness="10" BorderBrush="Pink">
+                
+            
             <TabItem >
                 <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
@@ -24,8 +47,10 @@
                 </TabItem.Header>
 
                 <ScrollViewer>
-                <ItemsControl ItemsSource="{Binding Products}">
-                    <ItemsControl.ItemTemplate>
+                        <ItemsControl ItemsSource="{Binding Products}"
+                                      ItemTemplate="{StaticResource ResourceKey=ProductTemplate}">
+
+                            <!--<ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" Background="AliceBlue" Margin="10">
                                 <Label Content="Nazwa: "/>
@@ -36,7 +61,7 @@
                                 <TextBox Text="{Binding Price}"/>
                             </StackPanel>
                         </DataTemplate>
-                    </ItemsControl.ItemTemplate>
+                    </ItemsControl.ItemTemplate>-->
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid/>
@@ -65,8 +90,9 @@
             <TabItem Header="ListBox">
                 <ListBox ItemsSource="{Binding Products}"
                          SelectedItem="{Binding SelectedProduct}"
-                         SelectionMode="Extended">
-                    <ListBox.ItemTemplate>
+                         SelectionMode="Extended"
+                                      ItemTemplate="{StaticResource ResourceKey=ProductTemplate}">
+                    <!--<ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Nazwa: "/>
@@ -77,14 +103,14 @@
                                 <Label Content="{Binding Price}"/>
                             </StackPanel>
                         </DataTemplate>
-                    </ListBox.ItemTemplate>
+                    </ListBox.ItemTemplate>-->
                 </ListBox>
                 
             </TabItem>
             <TabItem Header="ListView">
-                <ListView ItemsSource="{Binding Products}"
+                    <ListView ItemsSource="{Binding Products}"
                          SelectedItem="{Binding SelectedProduct}">
-                    <ListView.ItemTemplate>
+                        <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Nazwa: "/>
@@ -114,6 +140,7 @@
                 <DataGrid ItemsSource="{Binding Products}"
                           SelectedItem="{Binding SelectedProduct}"
                           IsReadOnly="True"
+                          
                           AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}"/>

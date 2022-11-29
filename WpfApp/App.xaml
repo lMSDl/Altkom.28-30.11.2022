@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:WpfApp"
              StartupUri="ItemsControlWindow.xaml">
     <Application.Resources>
-
+        <!--<ResourceDictionary>
+            <DataTemplate x:Key="ProductTemplate">
+                <StackPanel Orientation="Vertical" Background="AliceBlue" Margin="10">
+                    <Label Content="Nazwa: "/>
+                    <Label Content="{Binding Name}"/>
+                    <Label Content="Data ważności: "/>
+                    <Label Content="{Binding ExpirationDate}"/>
+                    <Label Content="Cena [zł]: "/>
+                    <TextBox Text="{Binding Price}"/>
+                </StackPanel>
+            </DataTemplate>
+        </ResourceDictionary>-->
     </Application.Resources>
 </Application>
