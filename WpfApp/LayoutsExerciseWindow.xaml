@@ -17,16 +17,27 @@
             <Button Background="Azure" Margin="10" Grid.Column="0">Button</Button>
             <StackPanel Background="White" Margin="10" Grid.Column="1" VerticalAlignment="Center">
                 <StackPanel.Resources>
-                    <Style TargetType="Button" >
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="/ResourceDictionaries/MyDictionary.xaml"/>
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                    <!--<Style TargetType="Button" >
                         <Setter Property="Margin" Value="50"/>
                     </Style>
+                    <Style TargetType="Button" x:Key="BaseButton">
+                        <Setter Property="Margin" Value="10"/>
+                    </Style>
+                    <Style TargetType="Button" x:Key="AlternateButton"
+                           BasedOn="{StaticResource BaseButton}">
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>-->
                 </StackPanel.Resources>
 
-                <Button Background="Red" Margin="10" Content="Button"  >
-
-                </Button>
-                <Button Background="Green" >Button</Button>
-                <Button Background="Blue" >Button</Button>
+                <Button Background="Red" >Button</Button>
+                <Button Background="Green" Style="{StaticResource BaseButton}" >Button</Button>
+                <Button Background="Blue" Style="{StaticResource AlternateButton}">Button</Button>
             </StackPanel>
         </Grid>
     </DockPanel>
