@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,23 +19,46 @@ namespace WpfApp
     /// <summary>
     /// Interaction logic for Dice.xaml
     /// </summary>
-    public partial class Dice : Window
+    public partial class Dice : Window, INotifyPropertyChanged
     {
+        private int numberOfDice;
+
         public Dice()
         {
             InitializeComponent();
-            DataContext= this;
+            DataContext = this;
+            Dices = new ObservableCollection<Models.Dice>();
             NumberOfDice = 6;
 
-            Dices = new ObservableCollection<Models.Dice>();
-            for (int i = 0; i < NumberOfDice; i++)
-            {
-                Dices.Add(new Models.Dice());
-            }
+            //Dices.CollectionChanged += Dices_CollectionChanged;
         }
 
-        public int NumberOfDice { get; set; }
+        /*private void Dices_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            switch(e.Action)
+            {
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
+                    NumberOfDice++;
+                    break;
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
+                    NumberOfDice--;
+                    break;
+            }
+        }*/
+
+        public int NumberOfDice
+        {
+            get => numberOfDice;
+            set
+            {
+                numberOfDice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumberOfDice)));
+                Button_Clear_Click(null, null);
+            }
+        }
         public ObservableCollection<Models.Dice> Dices { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void Button_Roll_Click(object sender, RoutedEventArgs e)
         {
@@ -47,27 +71,27 @@ namespace WpfApp
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var dice in Dices.Where(x => !x.IsLocked))
+            Dices.Clear();
+            for (int i = 0; i < NumberOfDice; i++)
             {
-                dice.Value = 0;
+                Dices.Add(new Models.Dice());
             }
         }
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            Dices.Add(new Models.Dice());
+            NumberOfDice++;
         }
         private void Button_Remove_Click(object sender, RoutedEventArgs e)
         {
-            if(Dices.Any())
-                Dices.Remove(Dices.Last());
+            NumberOfDice--;
         }
 
         private void Dice_Click(object sender, RoutedEventArgs e)
         {
-            if(sender is Button button)
+            if (sender is Button button)
             {
-                if(button.DataContext is Models.Dice dice)
+                if (button.DataContext is Models.Dice dice)
                 {
                     dice.IsLocked = !dice.IsLocked;
                 }
