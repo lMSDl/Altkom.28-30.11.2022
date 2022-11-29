@@ -54,7 +54,6 @@
             <TabItem Header="ListBox">
                 <ListBox ItemsSource="{Binding Products}"
                          SelectedItem="{Binding SelectedProduct}"
-                         SelectedItems="{Binding SelectedProducts, Mode=OneWayToSource}"
                          SelectionMode="Extended">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -71,7 +70,24 @@
                 </ListBox>
                 
             </TabItem>
-            <TabItem Header="ListView"></TabItem>
+            <TabItem Header="ListView">
+                <ListView ItemsSource="{Binding Products}"
+                         SelectedItem="{Binding SelectedProduct}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Nazwa: "/>
+                                <Label Content="{Binding Name}"/>
+                                <Label Content="Data ważności: "/>
+                                <Label Content="{Binding ExpirationDate}"/>
+                                <Label Content="Cena: "/>
+                                <Label Content="{Binding Price}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </TabItem>
             <TabItem Header="DataGrid"></TabItem>
 
         </TabControl>
