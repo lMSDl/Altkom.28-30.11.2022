@@ -13,6 +13,13 @@
 
   <ItemGroup>
     <Resource Include="MyImages\tree.jpg" />
+	  <Resource Include="MyImages\kostka1.png" />
+	  <Resource Include="MyImages\kostka2.png" />
+	  <Resource Include="MyImages\kostka3.png" />
+	  <Resource Include="MyImages\kostka4.png" />
+	  <Resource Include="MyImages\kostka5.png" />
+	  <Resource Include="MyImages\kostka6.png" />
+	  <Resource Include="MyImages\kostkapusta.png" />
   </ItemGroup>
 
   <ItemGroup>
