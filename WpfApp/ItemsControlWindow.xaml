@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="ItemsControlWindow" Height="450" Width="800">
     <Grid>
-
+        <DockPanel>
+        <ComboBox DockPanel.Dock="Top">
+                <ComboBoxItem Tag="ItemsControl"/>
+                <ComboBoxItem Tag="ListBox"/>
+                <ComboBoxItem Tag="ListView"/>
+                <ComboBoxItem Tag="DataGrid"/>
+            </ComboBox>
         <TabControl SelectedIndex="2" TabStripPlacement="Left" BorderThickness="10" BorderBrush="Pink">
             <TabItem >
                 <TabItem.Header>
@@ -119,6 +125,6 @@
             </TabItem>
 
         </TabControl>
-        
+        </DockPanel>
     </Grid>
 </Window>
