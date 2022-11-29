@@ -85,10 +85,27 @@
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="True">
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                                            Header="Nazwa"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding ExpirationDate}"
+                                            Header="Data ważności"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Price}"
+                                            Header="Cena"/>
+                        </GridView>
+                    </ListView.View>
                 </ListView>
                 
             </TabItem>
-            <TabItem Header="DataGrid"></TabItem>
+            <TabItem Header="DataGrid">
+                <DataGrid ItemsSource="{Binding Products}"
+                          SelectedItem="{Binding SelectedProduct}">
+                   
+                </DataGrid>
+                
+            </TabItem>
 
         </TabControl>
         
