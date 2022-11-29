@@ -30,48 +30,61 @@
             
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image  >
-                        <Image.Style>
-                            <Style TargetType="Image">
-                                <Setter Property="Source"
-                                        Value="MyImages/kostkapusta.png"/>
+                        <Button Click="Dice_Click">
+                            <Image>
+                                <Image.Style>
+                                    <Style TargetType="Image">
+                                        <Setter Property="Source"
+                                                Value="MyImages/kostkapusta.png"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Value}"
+                                                             Value="1">
+                                                    <Setter Property="Source"
+                                                            Value="MyImages/kostka1.png"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Value}"
+                                                             Value="2">
+                                                    <Setter Property="Source"
+                                                            Value="MyImages/kostka2.png"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Value}"
+                                                             Value="3">
+                                                    <Setter Property="Source"
+                                                            Value="MyImages/kostka3.png"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Value}"
+                                                             Value="4">
+                                                    <Setter Property="Source"
+                                                            Value="MyImages/kostka4.png"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Value}"
+                                                             Value="5">
+                                                    <Setter Property="Source"
+                                                            Value="MyImages/kostka5.png"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Value}"
+                                                             Value="6">
+                                                    <Setter Property="Source"
+                                                            Value="MyImages/kostka6.png"/>
+                                                </DataTrigger>
+                                        </Style.Triggers>
+                                
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                            <Button.Style>
+                                <Style TargetType="Button">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Value}"
-                                                     Value="1">
-                                            <Setter Property="Source"
-                                                    Value="MyImages/kostka1.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Value}"
-                                                     Value="2">
-                                            <Setter Property="Source"
-                                                    Value="MyImages/kostka2.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Value}"
-                                                     Value="3">
-                                            <Setter Property="Source"
-                                                    Value="MyImages/kostka3.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Value}"
-                                                     Value="4">
-                                            <Setter Property="Source"
-                                                    Value="MyImages/kostka4.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Value}"
-                                                     Value="5">
-                                            <Setter Property="Source"
-                                                    Value="MyImages/kostka5.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Value}"
-                                                     Value="6">
-                                            <Setter Property="Source"
-                                                    Value="MyImages/kostka6.png"/>
+                                        <DataTrigger Binding="{Binding IsLocked}"
+                                                             Value="true">
+                                            <Setter Property="Background"
+                                                            Value="Red"/>
                                         </DataTrigger>
                                     </Style.Triggers>
-                                
-                            </Style>
-                        </Image.Style>
-                    </Image>
-                </DataTemplate>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </DataTemplate>
             </ItemsControl.ItemTemplate>
             
         </ItemsControl>
