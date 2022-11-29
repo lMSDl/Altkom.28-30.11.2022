@@ -16,9 +16,17 @@
             </Grid.ColumnDefinitions>
             <Button Background="Azure" Margin="10" Grid.Column="0">Button</Button>
             <StackPanel Background="White" Margin="10" Grid.Column="1" VerticalAlignment="Center">
-                <Button Background="Red" Margin="10">Button</Button>
-                <Button Background="Green" Margin="10">Button</Button>
-                <Button Background="Blue" Margin="10">Button</Button>
+                <StackPanel.Resources>
+                    <Style TargetType="Button" >
+                        <Setter Property="Margin" Value="50"/>
+                    </Style>
+                </StackPanel.Resources>
+
+                <Button Background="Red" Margin="10" Content="Button"  >
+
+                </Button>
+                <Button Background="Green" >Button</Button>
+                <Button Background="Blue" >Button</Button>
             </StackPanel>
         </Grid>
     </DockPanel>
