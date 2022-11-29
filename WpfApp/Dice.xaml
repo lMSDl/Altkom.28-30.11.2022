@@ -7,9 +7,9 @@
         xmlns:converters="clr-namespace:WpfApp.Converters"
         mc:Ignorable="d"
         Title="Dice" Height="450" Width="800">
-    <Window.Resources>
+    <!--<Window.Resources>
         <converters:IntToStringConverter x:Key="IntToStringConverter"/>
-    </Window.Resources>
+    </Window.Resources>-->
     
     <Grid>
         <DockPanel>
@@ -29,8 +29,8 @@
             <TextBox DockPanel.Dock="Top"
                      HorizontalContentAlignment="Center"
                      Text="{Binding NumberOfDice, Mode=TwoWay,
-                            Converter={StaticResource IntToStringConverter},
-                            UpdateSourceTrigger=PropertyChanged}"/>
+                            Converter={converters:IntToStringConverter MaxValue=25},
+                            UpdateSourceTrigger=PropertyChanged} "/>
 
             <ItemsControl ItemsSource="{Binding Dices}">
             <ItemsControl.ItemsPanel>
