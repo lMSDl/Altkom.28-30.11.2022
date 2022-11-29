@@ -21,16 +21,21 @@
                 <ItemsControl ItemsSource="{Binding Products}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical" Background="AliceBlue" Margin="10">
                                 <Label Content="Nazwa: "/>
                                 <Label Content="{Binding Name}"/>
                                 <Label Content="Data ważności: "/>
                                 <Label Content="{Binding ExpirationDate}"/>
                                 <Label Content="Cena: "/>
-                                <Label Content="{Binding Price}"/>
+                                <TextBox Text="{Binding Price}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
                     
                     <!--<Label Content="Label1"/>
                     <Label Content="Label2"/>
@@ -99,10 +104,16 @@
                 </ListView>
                 
             </TabItem>
-            <TabItem Header="DataGrid">
+            <TabItem Header="DataGrid" >
                 <DataGrid ItemsSource="{Binding Products}"
-                          SelectedItem="{Binding SelectedProduct}">
-                   
+                          SelectedItem="{Binding SelectedProduct}"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Data ważności" Binding="{Binding ExpirationDate}"/>
+                        <DataGridTextColumn Header="Cena" Binding="{Binding Price}"/>
+                    </DataGrid.Columns> 
                 </DataGrid>
                 
             </TabItem>
