@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
-        xmlns:properties="clr-namespace:WpfApp.Properties"
+        xmlns:properties="clr-namespace:WpfApp.Properties" xmlns:controls="clr-namespace:WpfApp.Controls"
         mc:Ignorable="d"
         Title="ItemsControlWindow" Height="450" Width="800">
     <Window.Resources>
@@ -92,20 +92,13 @@
                 <ListBox ItemsSource="{Binding Products}"
                          SelectedItem="{Binding SelectedProduct}"
                          SelectionMode="Extended"
-                                      ItemTemplate="{StaticResource ResourceKey=ProductTemplate}">
-                    <!--<ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Nazwa: "/>
-                                <Label Content="{Binding Name}"/>
-                                <Label Content="Data ważności: "/>
-                                <Label Content="{Binding ExpirationDate}"/>
-                                <Label Content="Cena: "/>
-                                <Label Content="{Binding Price}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>-->
-                </ListBox>
+                                      >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <controls:ProductControl Product="{Binding}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 
             </TabItem>
             <TabItem Header="ListView">
@@ -151,6 +144,10 @@
                 </DataGrid>
                 
             </TabItem>
+
+                <TabItem Header="Selected item">
+                    <controls:ProductControl Product="{Binding SelectedProduct}"/>
+                </TabItem>
 
         </TabControl>
         </DockPanel>

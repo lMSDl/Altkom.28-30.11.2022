@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="WpfApp.Controls.ProductControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp.Controls"
+             xmlns:properties="clr-namespace:WpfApp.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="UserControl">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Vertical" Background="AliceBlue" Margin="10">
+                <Label Content="{x:Static properties:Resources.Name}"/>
+                <Label Content="{Binding Product.Name, ElementName=UserControl}"/>
+                <Label Content="{x:Static properties:Resources.ExpirationDate}"/>
+                <Label Content="{Binding Product.ExpirationDate, ElementName=UserControl}"/>
+                <Label Content="{x:Static properties:Resources.Price}"/>
+                <Label Content="{Binding Product.Price, ElementName=UserControl}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
