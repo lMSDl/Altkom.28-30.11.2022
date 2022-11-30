@@ -33,7 +33,8 @@
                     </TextBox.Text>
                 </TextBox>
                 <Label Content="Data przydatności"/>
-                <DatePicker SelectedDate="{Binding Product.ExpirationDate, UpdateSourceTrigger=PropertyChanged}"/>
+                <DatePicker SelectedDate="{Binding Product.ExpirationDate, UpdateSourceTrigger=PropertyChanged}"
+                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
         </StackPanel>
         </DockPanel>
     </Grid>
