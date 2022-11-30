@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -31,7 +32,7 @@ namespace WpfApp_MVVM.ViewModels
         public ProductsViewModel()
         {
 
-            Products = new ObservableCollection<Product>(new ProductFaker().Generate(5));
+            Products = new ObservableCollection<Product>();
 
             //ShowDetailsCommand = new ShowDetailsCommand();
             ShowDetailsCommand = new RelayCommand(
@@ -43,12 +44,22 @@ namespace WpfApp_MVVM.ViewModels
                 param => param as Product != null);
 
             AddOrEditCommand = new RelayCommand(x => AddOrEdit((Product?)x));
+            LoadCommand = new RelayCommand(async x => await LoadAsync(),
+                           x => !Products.Any());
         }
+
+        private async Task LoadAsync()
+        {
+            await Task.Delay(5000);
+            new ProductFaker().Generate(5).ForEach(xx => Products.Add(xx));
+        }
+
 
         //public ShowDetailsCommand ShowDetailsCommand { get; }
         public ICommand ShowDetailsCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand AddOrEditCommand { get; }
+        public ICommand LoadCommand { get; }
 
         private void AddOrEdit(Product product)
         {

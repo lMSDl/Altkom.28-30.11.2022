@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:WpfApp_MVVM.Views"
         xmlns:vm="clr-namespace:WpfApp_MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="Products" Height="450" Width="800">
+        Title="Products" Height="450" Width="800"
+        >
+    
 
     <Window.DataContext>
         <vm:ProductsViewModel/>
@@ -15,6 +17,7 @@
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                <Button Content="Załaduj" Command="{Binding LoadCommand}" />
                 <Button Content="Szczegóły" Command="{Binding ShowDetailsCommand}" />
                 <Button Content="Usuń" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedItem,ElementName=ListView}" />
                 <Button Content="Dodaj" Command="{Binding AddOrEditCommand}" />

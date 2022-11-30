@@ -16,6 +16,12 @@
             <Button Content="Roll"
                     Click="Button_Roll_Click"
                     DockPanel.Dock="Bottom"/>
+            <ProgressBar Maximum="{Binding MaxProgress}"
+                         Value="{Binding Progress}"
+                         Height="15"
+                         IsIndeterminate="{Binding IsIndeterminate}"
+                        DockPanel.Dock="Bottom"/>
+
             <Button Content="Clear"
                     Click="Button_Clear_Click"
                     DockPanel.Dock="Top"/>
@@ -26,11 +32,6 @@
                     Click="Button_Add_Click"
                     DockPanel.Dock="Right"/>
 
-            <TextBox DockPanel.Dock="Top"
-                     HorizontalContentAlignment="Center"
-                     Text="{Binding NumberOfDice, Mode=TwoWay,
-                            Converter={converters:IntToStringConverter MaxValue=25},
-                            UpdateSourceTrigger=PropertyChanged} "/>
 
             <ItemsControl ItemsSource="{Binding Dices}">
             <ItemsControl.ItemsPanel>

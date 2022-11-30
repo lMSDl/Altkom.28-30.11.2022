@@ -22,6 +22,9 @@ namespace WpfApp
     public partial class Dice : Window, INotifyPropertyChanged
     {
         private int numberOfDice;
+        private float maxProgress;
+        private float progress;
+        private bool isIndeterminate;
 
         public Dice()
         {
@@ -60,14 +63,6 @@ namespace WpfApp
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void Button_Roll_Click(object sender, RoutedEventArgs e)
-        {
-            var random = new Random();
-            foreach (var dice in Dices)
-            {
-                dice.Value = random.Next(1, 7);
-            }
-        }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +91,59 @@ namespace WpfApp
                     dice.IsLocked = !dice.IsLocked;
                 }
             }
+        }
+
+        public float MaxProgress
+        {
+            get => maxProgress; set
+            {
+                maxProgress = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MaxProgress)));
+            }
+        }
+        public float Progress
+        {
+            get => progress; set
+            {
+                progress = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Progress)));
+            }
+        }
+        public bool IsIndeterminate
+        {
+            get => isIndeterminate; set
+            {
+                isIndeterminate = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsIndeterminate)));
+            }
+        }
+
+
+        private async void Button_Roll_Click(object sender, RoutedEventArgs e)
+        {
+            await RollAsync();
+        }
+
+        public async Task RollAsync()
+        {
+            var random = new Random();
+            MaxProgress = Dices.Count;
+            Progress = 0;
+            var tasks = Dices.Where(x => !x.IsLocked).Select(x => RollAsync(random, x)).ToArray();
+
+            await Task.WhenAll(tasks);
+        }
+
+        private async Task RollAsync(Random random, Models.Dice dice)
+        {
+            var numberOfRols = random.Next(25, 75);
+            for (int i = 0; i < numberOfRols; i++)
+            {
+                dice.Value = random.Next(1, 7);
+                await Task.Delay(25);
+            }
+
+            Progress++;
         }
     }
 }
