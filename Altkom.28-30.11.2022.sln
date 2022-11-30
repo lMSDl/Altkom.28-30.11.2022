@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{9374FD66-5B0D-40DF-8B2E-16F221B1C2E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_MVVM", "WpfApp_MVVM\WpfApp_MVVM.csproj", "{20ADE9A5-A94E-4951-92F7-01BA358542D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9374FD66-5B0D-40DF-8B2E-16F221B1C2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9374FD66-5B0D-40DF-8B2E-16F221B1C2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9374FD66-5B0D-40DF-8B2E-16F221B1C2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20ADE9A5-A94E-4951-92F7-01BA358542D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20ADE9A5-A94E-4951-92F7-01BA358542D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20ADE9A5-A94E-4951-92F7-01BA358542D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20ADE9A5-A94E-4951-92F7-01BA358542D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
