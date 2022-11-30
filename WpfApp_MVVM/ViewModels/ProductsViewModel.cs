@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using WpfApp_MVVM.Commands;
+using WpfApp_MVVM.Views;
 
 namespace WpfApp_MVVM.ViewModels
 {
@@ -24,7 +25,6 @@ namespace WpfApp_MVVM.ViewModels
             {
                 selectedProduct = value;
                 //ShowDetailsCommand.Product = value;
-
             }
         }
 
@@ -41,10 +41,29 @@ namespace WpfApp_MVVM.ViewModels
             DeleteCommand = new RelayCommand(
                 param => Products.Remove((Product)param),
                 param => param as Product != null);
+
+            AddOrEditCommand = new RelayCommand(x => AddOrEdit((Product?)x));
         }
 
         //public ShowDetailsCommand ShowDetailsCommand { get; }
         public ICommand ShowDetailsCommand { get; }
         public ICommand DeleteCommand { get; }
+        public ICommand AddOrEditCommand { get; }
+
+        private void AddOrEdit(Product product)
+        {
+            var vm = new ProductViewModel(product);
+            var result = new ProductView(vm).ShowDialog();
+            if (result != true)
+                return;
+
+            if(product != null)
+            {
+                Products.Remove(product);
+            }
+                
+            Products.Add(vm.Product!);
+
+        }
     }
 }
