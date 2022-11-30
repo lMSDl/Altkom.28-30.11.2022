@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_MVVM.Views"
+        xmlns:vr="clr-namespace:WpfApp_MVVM.ValidationRules"
         mc:Ignorable="d"
         x:Name="Window"
         Title="ProductView" Height="450" Width="800">
@@ -19,10 +20,19 @@
             </Grid>
             <StackPanel>
             <Label Content="Nazwa"/>
-                <TextBox Text="{Binding Product.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding Product.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+                         ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
             <Label Content="Cena"/>
-                <TextBox Text="{Binding Product.Price, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="Data przydatności"/>
+                <TextBox ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" >
+                    <TextBox.Text>
+                        <Binding Path="Product.Price" UpdateSourceTrigger="PropertyChanged" >
+                            <Binding.ValidationRules>
+                                <vr:PriceValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Content="Data przydatności"/>
                 <DatePicker SelectedDate="{Binding Product.ExpirationDate, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         </DockPanel>

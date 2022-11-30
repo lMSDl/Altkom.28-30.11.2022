@@ -19,7 +19,7 @@ namespace WpfApp_MVVM.ViewModels
         {
             Product = (Product)product?.Clone() ?? new Product();
 
-            OkCommand = new RelayCommand(x => Ok((Window)x));
+            OkCommand = new RelayCommand(x => Ok((Window)x), x => !Product.HasErrors);
         }
 
         public ICommand OkCommand { get; }
